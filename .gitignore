@@ -1,0 +1,29 @@
+# LaTeX build artifacts
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.pdf
+*.xdv
+*.synctex.gz
+*.synctex(busy)
+
+# Build directories
+build/
+dist/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Keep the main PDFs and dated versions
+!Mikolaj\ Mieszko\ Charchuta\ Resume.pdf
+!Mikolaj\ Mieszko\ Charchuta\ Resume\ *.pdf

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional resume of Mikołaj Mieszko Charchuta - Bioinformatics & Microbiology">
+    <meta name="author" content="Mikołaj Mieszko Charchuta">
+    <title>Resume – Mikołaj Mieszko Charchuta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .header .subtitle {
+            font-size: 0.95em;
+            opacity: 0.8;
+            margin-top: 15px;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro h2 {
+            font-size: 1.5em;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .intro p {
+            font-size: 1.05em;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            border: 2px solid #667eea;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            color: #667eea;
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: #f0f0f0;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .feature {
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 800px;
+            margin: 30px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .pdf-viewer embed {
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer {
+            padding: 30px;
+            background: #f8f9fa;
+            text-align: center;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .links {
+            margin-top: 15px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            background: white;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #667eea;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .links a:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .pdf-viewer {
+                height: 600px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Mikołaj Mieszko Charchuta</h1>
+            <p>Bioinformatics • Microbiology • Research</p>
+            <p class="subtitle">Specialized in comparative genomics, metabolomics, and microbial ecology</p>
+        </div>
+
+        <div class="content">
+            <div class="intro">
+                <h2>Professional Resume</h2>
+                <p>MSc in Bioinformatics with expertise in meta-omics analysis, bioprospecting, and cultivated meat research.</p>
+                <p>Research experience across European universities including Charles University (Prague), University of Gdańsk, and Leiden UMC.</p>
+            </div>
+
+            <div class="buttons">
+                <a href="./Mikolaj Mieszko Charchuta Resume.pdf" class="btn btn-primary" download>
+                    📥 Download Resume (PDF)
+                </a>
+                <a href="https://github.com/yourusername" class="btn btn-secondary">
+                    🔗 GitHub Profile
+                </a>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <h3>📄 Single Page</h3>
+                    <p>Optimized for ATS systems and quick scanning. All essential information on one professional page.</p>
+                </div>
+                <div class="feature">
+                    <h3>⚡ Auto-Built</h3>
+                    <p>Generated from LaTeX source with automated versioning and timestamp-based snapshots.</p>
+                </div>
+                <div class="feature">
+                    <h3>🎨 Modern Design</h3>
+                    <p>Built on the Deedy Resume template with custom improvements and modern typography.</p>
+                </div>
+                <div class="feature">
+                    <h3>🔗 Interactive</h3>
+                    <p>Contains live hyperlinks to GitHub, LinkedIn, email, and research projects with video references.</p>
+                </div>
+            </div>
+
+            <div style="margin: 30px 0; text-align: center;">
+                <p style="color: #666; margin-bottom: 15px;"><strong>Preview your resume below:</strong></p>
+            </div>
+
+            <div class="pdf-viewer">
+                <embed src="./Mikolaj Mieszko Charchuta Resume.pdf" type="application/pdf" />
+            </div>
+
+            <div style="text-align: center; margin: 30px 0; color: #666;">
+                <p><em>If the PDF doesn't display above, <a href="./Mikolaj Mieszko Charchuta Resume.pdf" style="color: #667eea;">click here to download it</a>.</em></p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Built with LaTeX, powered by XeLaTeX</strong></p>
+            <p>Based on <a href="https://github.com/deedy/Deedy-Resume">Deedy Resume template</a> – Extended and customized for modern compilation and automated builds.</p>
+            
+            <div class="links">
+                <a href="https://github.com/yourusername" title="GitHub">GitHub</a>
+                <a href="https://linkedin.com/in/yourprofile" title="LinkedIn">LinkedIn</a>
+                <a href="mailto:your.email@domain.com" title="Email">Email</a>
+                <a href="./README.md" title="Project Info">About This Repo</a>
+            </div>
+
+            <p style="margin-top: 20px; font-size: 0.9em;">Last updated: February 22, 2026</p>
+        </div>
+    </div>
+</body>
+</html>

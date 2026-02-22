@@ -1,0 +1,32 @@
+# LaTeX source files
+*.tex text diff=latex
+*.cls text diff=latex
+*.sty text diff=latex
+
+# Binary files
+*.pdf binary
+*.xdv binary
+*.aux binary
+*.fdb_latexmk binary
+*.fls binary
+*.log binary
+*.out binary
+
+# Font files
+fonts/** binary
+
+# Shell scripts
+*.ps1 text working-tree-encoding=UTF-16LE-BOM eol=crlf
+build_resume.ps1 text working-tree-encoding=UTF-16LE-BOM eol=crlf
+
+# GitHub Actions
+.github/** text eol=lf
+
+# Documentation
+*.md text eol=lf
+*.txt text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# Configuration files
+latexmkrc text diff=bash eol=lf
