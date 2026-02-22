@@ -1,0 +1,48 @@
+name: Build Resume
+
+on:
+  push:
+    paths:
+      - '**.tex'
+      - 'deedy-resume-openfont.cls'
+      - 'latexmkrc'
+      - 'fonts/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Install LaTeX and dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-latex-extra latexmk
+      
+      - name: Install custom fonts
+        run: |
+          mkdir -p ~/.fonts
+          cp -r fonts/* ~/.fonts/
+          fc-cache -fv
+      
+      - name: Build resume with latexmk
+        run: |
+          latexmk -xelatex "Mikolaj Mieszko Charchuta Resume.tex"
+          
+      - name: Generate timestamped PDF
+        run: |
+          DATE=$(date +%d%b%Y)
+          cp "Mikolaj Mieszko Charchuta Resume.pdf" "Resume_${DATE}.pdf"
+      
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          if [ "$(git status --porcelain)" != "" ]; then
+            git add "Mikolaj Mieszko Charchuta Resume.pdf" "Resume_*.pdf"
+            git commit -m "Auto-build: Update resume PDF [$(date +%Y-%m-%d)]"
+            git push
+          fi

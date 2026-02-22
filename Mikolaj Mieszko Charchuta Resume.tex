@@ -1,0 +1,226 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Deedy - One Page Two Column Resume
+% LaTeX Template
+% Version 1.2 (16/9/2014)
+%
+% Original author:
+% Debarghya Das (http://debarghyadas.com)
+%
+% Original repository:
+% https://github.com/deedydas/Deedy-Resume
+%
+% IMPORTANT: THIS TEMPLATE NEEDS TO BE COMPILED WITH XeLaTeX
+%
+% This template uses several fonts not included with Windows/Linux by
+% default. If you get compilation errors saying a font is missing, find the line
+% on which the font is used and either change it to a font included with your
+% operating system or comment the line out to use the default font.
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% TODO:
+% 1. Integrate biber/bibtex for article citation under publications.
+% 2. Figure out a smoother way for the document to flow onto the next page.
+% 3. Add styling information for a "Projects/Hacks" section.
+% 4. Add location/address information
+% 5. Merge OpenFont and MacFonts as a single sty with options.
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% CHANGELOG:
+% v1.1:
+% 1. Fixed several compilation bugs with \renewcommand
+% 2. Got Open-source fonts (Windows/Linux support)
+% 3. Added Last Updated
+% 4. Move Title styling into .sty
+% 5. Commented .sty file.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Known Issues:
+% 1. Overflows onto second page if any column's contents are more than the
+% vertical limit
+% 2. Hacky space on the first bullet point on the second column.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[]{deedy-resume-openfont}
+\usepackage{fancyhdr}
+\geometry{left=1.0cm,right=1.0cm,top=0.55cm,bottom=0.45cm}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+ 
+\begin{document}
+
+\renewcommand{\sectionsep}{\vspace{3pt}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     TITLE NAME
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\namesection{Mikołaj Mieszko}{Charchuta}{ \urlstyle{same}\href{https://www.github.com/mmcharchuta}{github.com/mmcharchuta}| \href{https://www.linkedin.com/in/mmcharchuta/}{linkedin.com/in/mmcharchuta/}\\ | +48 730 359 228 | \href{mailto:mmcharchuta@gmail.com}{mmcharchuta@gmail.com} | Poznań, Poland (open to remote, hybrid, relocation)
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     COLUMN ONE
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t]{0.33\textwidth} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     EDUCATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Education} 
+
+\subsection{AMU, Poznan}
+\descript{MSc in Bioinformatics}
+\location{Oct 2025 -- Jul 2027}
+{\footnotesize Thesis: \textit{In silico analysis of Cry9 toxins and their genetic determinants in the Bacillus thuringiensis pangenome} (first-author article in preparation).}\\
+\sectionsep
+
+\subsection{AMU, Poznan}
+\descript{BSc in Bioinformatics \& Biotechnology}
+\location{Oct 2021 -- Sep 2025}
+{\footnotesize Thesis: \textit{Comparison of naïve methods for taxonomic classification of microorganisms using marker gene sequences} (created the \href{https://github.com/mmcharchuta/NaiveR}{NaïveR R package}).}\\
+\sectionsep
+
+\subsection{Charles University, Prague}
+\descript{Erasmus+ Exchange}
+\location{Winter 2022/23, Summer 2023/24}
+{\footnotesize \textbullet{} Institute of Microbiology, Czech Academy of Sciences: \textit{Profiling metabolism of complex microbial communities with Stable Isotope Probing and meta-omics}.\\
+\textbullet{} Faculty of Natural Sciences, Charles University: Applying CryoEM for studying the structures of cultivated meat proteins.}\\
+\sectionsep
+
+\subsection{University of Gdansk}
+\descript{National Exchange}
+\location{Winter semester 2023/24}
+{\footnotesize \textbullet{} Faculty of Biotechnology, UoG \& Gdansk Medical University: Metabolomics \& proteomics of SynComs bioprotective against plant pathogens.\\
+\textbullet{} Faculty of Biology, UoG: Genomes of phages infecting uropathogenic \textit{E. coli}.}\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     SKILLS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Skills}
+\subsection{Programming}
+R \textbullet{} Bash \textbullet{} Python \textbullet{} C++ \\
+Git \textbullet{} Docker \textbullet{} AWS \textbullet{} Slurm \textbullet{} Nextflow
+\sectionsep
+
+\subsection{Bioinformatics}
+Transcriptomics (DESeq2, rMATS) \\
+Genomics (samtools, GATK, Hi-C/3C-seq) \\
+Metagenomics (QIIME2, mothur, NaïveR)
+\sectionsep
+
+\subsection{Thesis Skills}
+R package development (NaïveR) \\
+Taxonomic classification benchmarking \\
+Pangenome analysis \textbullet{} Cry toxin gene mining
+\sectionsep
+
+\subsection{Languages}
+English (C2) \textbullet{} Polish (Native) \textbullet{} German (B2)
+\sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     COLUMN TWO
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{minipage} 
+\hfill
+\begin{minipage}[t]{0.66\textwidth} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     EXPERIENCE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Experience}
+\runsubsection{AMU Microbiology Dept.}
+\descript{| Bioinformatician}
+\location{Sep 2025 -- Present, 20\% FTE | Poznań, PL}
+\begin{tightemize}
+\item Genomics of pests and biopesticidal microbes; predictive protein design.
+\item Hi-C/3C-seq analysis and workflow development.
+\end{tightemize}
+\sectionsep
+
+\runsubsection{Bene Meat Technologies}
+\descript{| Bioinformatician}
+\location{Mar 2024 -- Jul 2024 | Prague, CZ}
+\begin{tightemize}
+\item Transcriptomics and nanopore sequencing support.
+\item Bioreactor automation and production bioinformatics support.
+\end{tightemize}
+\sectionsep
+
+\runsubsection{Leiden University Medical Center}
+\descript{| Intern, Endocrinology Dept.}
+\location{Jun 2023 -- Oct 2023 | Leiden, NL}
+\begin{tightemize}
+\item Bioinformatics support, data visualization, and pipeline creation.
+\item Co-authored publication in AJP (murine model work).
+\end{tightemize}
+\sectionsep
+
+\runsubsection{MNM Diagnostics}
+\descript{| Genome Analyst}
+\location{Feb 2022 -- Jul 2022 | Poznań, PL}
+\begin{tightemize}
+\item Automation, WGBS (epigenomics)  ML feature extraction, data-lake.
+\item Genome analysis interpretation. Cooperation with clinicians.
+
+\end{tightemize}
+\sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     PROJECTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Projects}
+\runsubsection{Testing DynaMAP\texttrademark{} -- Optical Mapping \& Nanopore}
+\descript{| Bachelor Thesis Project (Team Lead)}
+\location{Oct 2023 -- Oct 2025}
+\begin{tightemize}
+\item Student research grant; led team benchmarking microbiome profiling methods.
+\item Coordinated with Perseus Biomics - a startup specializing in rapid diagnostics - to test their DynaMAP\texttrademark{} technology for microbiome profiling, comparing it against established methods like 16S rRNA sequencing and shotgun metagenomics.
+\end{tightemize}
+\sectionsep
+
+\runsubsection{SPUN -- Illumina Sequencing}
+\descript{| International Grant}
+\location{Nov 2022 -- Apr 2024}
+\begin{tightemize}
+\item Predicted global biodiversity hotspots with ML.
+\item Field research video: \href{https://youtu.be/6frg_7ykXvc?t=128}{\url{https://youtu.be/6frg_7ykXvc?t=128}}.
+\end{tightemize}
+\sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     PUBLICATIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Publications}
+{\footnotesize
+\textbf{In silico analysis of Cry9 toxins and their genetic determinants in the Bacillus thuringiensis pangenome}\\
+In preparation (expected 2026). Charchuta, M. M. (first), Baranek, J. (second), et al.\\
+\textbf{Combination of dietary fiber and exercise training improves fat loss in mice but does not ameliorate MASLD more than exercise alone}\\
+American Journal of Physiology-Gastrointestinal and Liver Physiology, 2025. Kovynev, A.; Charchuta, M. M.; et al.\\
+\textbf{WED-517 Oatmeal a day does not keep the doctor away: inulin and exercise impact on MASLD amelioration and gut-liver crosstalk}\\
+Journal of Hepatology, 2024. Kovynev, A.; Charchuta, M.; et al.
+}
+
+\end{minipage}
+
+\vspace*{\fill}
+\noindent{\tiny I consent to the use of my personal data for recruitment purposes, in line with the GDPR (EU) 2016/679. My information will be stored and processed solely for the duration of the hiring process.}
+
+\end{document}
