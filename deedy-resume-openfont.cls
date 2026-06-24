@@ -41,44 +41,44 @@ Last Updated on \today
 % Name command
 \newcommand{\namesection}[3]{
 \centering{
-\fontsize{40pt}{60pt}
+\fontsize{36pt}{42pt}
 \fontspec[Path = fonts/lato/]{Lato-Hai}\selectfont #1 
 \fontspec[Path = fonts/lato/]{Lato-Lig}\selectfont #2
-} \\[5pt]
+} \\[4pt]
 \centering{
 \color{headings}
-\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{14pt}\selectfont #3}
+\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont #3}
 \noindent\makebox[\linewidth]{\color{headings}\rule{\paperwidth}{0.4pt}}
-\vspace{-15pt}
+\vspace{-18pt}
 }
 
 % Section seperators 
 \usepackage{titlesec}
 \titlespacing{\section}{0pt}{0pt}{0pt} 
 \titlespacing{\subsection}{0pt}{0pt}{0pt}
-\newcommand{\sectionsep}{\vspace{8pt}}
+\newcommand{\sectionsep}{\vspace{4pt}}
 
 % Headings command
 \titleformat{\section}{\color{headings}
-\fontspec[Path = fonts/lato/]{Lato-Lig}\fontsize{16pt}{24pt}\selectfont \raggedright\uppercase}{}{0em}{}
+\fontspec[Path = fonts/lato/]{Lato-Lig}\fontsize{14pt}{18pt}\selectfont \raggedright\uppercase}{}{0em}{}
 
 % Subeadings command
 \titleformat{\subsection}{
-\color{subheadings}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\uppercase}{}{0em}{}
+\color{subheadings}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{11pt}{11pt}\selectfont\uppercase}{}{0em}{}
 
 \newcommand{\runsubsection}[1]{
-\color{subheadings}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\uppercase {#1} \normalfont}
+\color{subheadings}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{11pt}{11pt}\selectfont\uppercase {#1} \normalfont}
 
 % Descriptors command
 \newcommand{\descript}[1]{
-\color{subheadings}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont {#1 \\} \normalfont}
+\color{subheadings}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{11pt}\selectfont {#1 \\} \normalfont}
 
 % Location command
 \newcommand{\location}[1]{
-\color{headings}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {#1\\} \normalfont}
+\color{headings}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{9pt}{10.5pt}\selectfont {#1\\} \normalfont}
 
 % Bullet Lists with fewer gaps command
 \newenvironment{tightemize}{
-\begin{itemize}\itemsep1pt \parskip0pt \parsep0pt}
+\begin{itemize}\itemsep0.5pt \parskip0pt \parsep0pt}
 {\end{itemize}}
 
