@@ -47,14 +47,14 @@
 
 \documentclass[]{deedy-resume-openfont}
 \usepackage{fancyhdr}
-\geometry{left=1.0cm,right=1.0cm,top=0.55cm,bottom=0.45cm}
+\geometry{a4paper,left=1.0cm,right=1.0cm,top=0.55cm,bottom=0.45cm}
  
 \pagestyle{fancy}
 \fancyhf{}
  
 \begin{document}
 
-\renewcommand{\sectionsep}{\vspace{3pt}}
+\renewcommand{\sectionsep}{\vspace{2pt}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -65,12 +65,20 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     PROFILE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{2pt}
+\noindent{\footnotesize \textbf{Bioinformatician turning exploratory genomics into reproducible, production-grade pipelines} (Nextflow, Snakemake, Docker, Conda), specialising in chromosome conformation capture (Meta Hi-C, 3C-seq) and machine learning on bacterial pangenomes. Bridging academia and industry: Meta Hi-C for phage-therapy R\&D at Phagos, an independently grant-funded project on the 3D genome of \textit{B. thuringiensis}, and prior R\&D in personalised medicine and cellular agriculture. Three publications and invited teaching on reproducibility; EU remote-first, open to B2B contracts and industrial PhD (CIFRE) partnerships.}
+\vspace{2pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %     COLUMN ONE
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{minipage}[t]{0.33\textwidth} 
+\begin{minipage}[t]{0.33\textwidth}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     EDUCATION
@@ -79,9 +87,9 @@
 \section{Education} 
 
 \subsection{BOKU, Vienna}
-\descript{MSc in bioinformatics (Erasmus)}
-\location{Jul 2026 -- Jul 2027}
-{\footnotesize Thesis project with Prof. Christian Stauffer.}\
+\descript{MSc Bioinformatics (Erasmus)}
+\location{Sep 2026 -- Jul 2027}
+{\footnotesize Academic exchange; thesis project with Prof. Christian Stauffer.}\\
 \sectionsep
 
 \subsection{AMU, Poznan}
@@ -93,24 +101,14 @@
 \subsection{AMU, Poznan}
 \descript{BSc in Bioinformatics \& Biotechnology}
 \location{Oct 2021 -- Sep 2025}
-{\footnotesize Thesis: \textit{Comparison of naïve methods for taxonomic classification of microorganisms using marker gene sequences} (created the \href{https://github.com/mmcharchuta/NaiveR}{NaïveR R package}).}\\
+{\footnotesize Thesis: \textit{naïve methods for taxonomic classification from marker genes} --- released as the \href{https://github.com/mmcharchuta/NaiveR}{NaïveR R package}.}\\
 \sectionsep
 
-\subsection{Charles University, Prague}
-\descript{Erasmus+ Exchange}
-\location{Winter 2022/23, Summer 2023/24}
-{\footnotesize \textbullet{} Institute of Microbiology, Czech Academy of Sciences: \\ \textit{Profiling metabolism of complex microbial communities with Stable Isotope Probing and meta-omics}.\\
-\textbullet{} Faculty of Natural Sciences, Charles University: \textit{Applying CryoEM for studying the structures of cultivated meat proteins.}\\
-}
-\sectionsep
-
-\subsection{University of Gdansk}
-\descript{National Exchange}
-\location{Winter semester 2023/24}
-{\footnotesize \textbullet{} Faculty of Biotechnology, UoG \& GUMed: \\ \textit{Metabolomics \& proteomics of SynComs bioprotective against plant pathogens.} \\
-\textbullet{} Faculty of Biology, UoG: \\ \textit{Genomes of phages infecting uropathogenic \textit{E. coli}.}\\
-}
-
+\subsection{Research Exchanges}
+\descript{Erasmus+ \& National}
+\location{2022 -- 2024}
+{\footnotesize \textbullet{} \textbf{Charles Univ. / Czech Acad. Sci.}: meta-omics \& stable isotope probing; CryoEM of cultivated-meat proteins. \\
+\textbullet{} \textbf{Univ. of Gdansk \& GUMed}: bioprotective SynComs; phage genomics.}\\
 \sectionsep
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -118,20 +116,28 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Skills}
+\subsection{Reproducibility}
+Nextflow \textbullet{} Snakemake \textbullet{} Docker \\
+Conda \textbullet{} Git \textbullet{} CI/CD \textbullet{} Slurm \textbullet{} AWS
+\sectionsep
+
 \subsection{Programming}
-R \textbullet{} Bash \textbullet{} Python \textbullet{} C++ \\
-Git \textbullet{} Docker \textbullet{} AWS \textbullet{} Slurm \textbullet{} Nextflow
+R \textbullet{} Python \textbullet{} Bash \textbullet{} C++ \\
+R package development (NaïveR)
 \sectionsep
 
 \subsection{Bioinformatics}
-Transcriptomics (DESeq2, rMATS) \\
-Genomics (samtools, GATK, Hi-C/3C-seq) \\
-Metagenomics (QIIME2, mothur, NaïveR)
+3D genomics (Hi-C, Meta Hi-C, 3C-seq) \\
+Pangenomics \& gene mining (samtools, GATK) \\
+Machine learning (scikit-learn, tidymodels) \\
+Transcriptomics (DESeq2) \textbullet{} metagenomics \\
+(QIIME2, mothur, NaïveR)
 \sectionsep
 
-\subsection{Thesis Skills}
-R package development (NaïveR) \\
-Pangenome analysis \textbullet{} gene mining
+\subsection{Grants}
+Study@Research, AMU (2026--27) \\
+SPUN intl. grant (2022--24): ML for soil \\
+biodiversity hotspots (\href{https://youtu.be/6frg_7ykXvc?t=128}{field video})
 \sectionsep
 
 \subsection{Languages}
@@ -144,11 +150,32 @@ Czech (A2) \textbullet{} Hungarian (A2)
 %     INTERESTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Interests}
-\textbullet{} Beekeeping \& Fungiculture \\
-\textbullet{} Cycling \& Bikepacking \\
-\textbullet{} Vegan cooking \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     TALKS & COMMUNITY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Talks \& Community}
+
+\subsection{CRABS 2026 / Health Intel.}
+\descript{Invited Speaker \& Workshop Lead}
+\location{Aug 2026 | Kyiv, UA}
+{\footnotesize Lecture on \textit{Reproducibility in Computational Genomics}; 2 Nextflow pipeline workshops; talk on Meta Hi-C \& ML for bacterial genomes.}\\
 \sectionsep
+
+\subsection{Bioinf. Community PL}
+\descript{Co-organiser}
+\location{2026 -- Present}
+{\footnotesize Event coordination, website, open-science advocacy.}\\
+\sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     INTERESTS
+%     (restore by uncommenting if space allows)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\section{Interests}
+%{\footnotesize Beekeeping \& fungiculture \textbullet{} bikepacking \textbullet{} vegan cooking}
+%\sectionsep
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -156,9 +183,9 @@ Czech (A2) \textbullet{} Hungarian (A2)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\end{minipage} 
+\end{minipage}
 \hfill
-\begin{minipage}[t]{0.66\textwidth} 
+\begin{minipage}[t]{0.66\textwidth}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     EXPERIENCE
@@ -168,26 +195,29 @@ Czech (A2) \textbullet{} Hungarian (A2)
 
 \runsubsection{Phagos}
 \descript{| Bioinformatician}
-\location{Jul 2026 -- Present | Remote/Paris, FR}
+\location{Jul 2026 -- Present | Remote / Paris, FR}
 \begin{tightemize}
-\item Project owner for internal phage therapy R\&D.
+\item Deliver phage--host association calls into the therapeutic discovery pipeline by analysing Meta Hi-C data end-to-end, from raw reads to ranked pairings.
+\item Made analyses re-runnable and free of environment drift by rebuilding ad-hoc scripts as containerised Nextflow workflows (Docker, Conda) used across the R\&D team.
+\item Guide two research projects and joint analyses with external academic partners (incl. Institut Pasteur), aligning experimental design with computational feasibility.
 \end{tightemize}
 \sectionsep
 
-\runsubsection{Danube International School Vienna}
-\descript{| Lab Technician\&Tutor}
-\location{Jul 2024 -- Present | Vienna, AT}
+\runsubsection{AMU, Dept. of Microbiology}
+\descript{| Contract Researcher}
+\location{Sep 2025 -- Jan 2028 | Remote / Poznań, PL}
 \begin{tightemize}
-\item Supporting the Science department. Preparing interesting lab experiments for students. Helping students conduct science projects.
+\item Won competitive Study@Research funding (app. nr. 201/34/UAM/0074) to run an independent project on the 3D genome of \textit{B. thuringiensis}, owning Hi-C library prep, sequencing and analysis solo.
+\item Produced the dataset behind a first-author manuscript by mining the \textit{B. thuringiensis} pangenome for Cry9 toxin determinants.
+\item Standardised the group's Hi-C/3C-seq analysis with reusable containerised workflows for contact-map QC and scaffolding.
 \end{tightemize}
 \sectionsep
 
-\runsubsection{AMU Microbiology Dept.}
-\descript{| Bioinformatician}
-\location{Sep 2025 -- Present, 20\% FTE | Remote/Poznań, PL}
+\runsubsection{Danube Int. School Vienna}
+\descript{| Lab Assistant}
+\location{Jun 2026 -- Aug 2028 | Vienna, AT}
 \begin{tightemize}
-\item Genomics of pests and biopesticidal microbes; predictive protein design.
-\item Hi-C/3C-seq analysis and workflow development.
+\item Teach science through practical experiment: design and run hands-on labs, and mentor students through independent research projects.
 \end{tightemize}
 \sectionsep
 
@@ -195,7 +225,7 @@ Czech (A2) \textbullet{} Hungarian (A2)
 \descript{| Scientist}
 \location{Jul 2024 -- Jun 2026 | Poznań, PL}
 \begin{tightemize}
-\item Allergen-related analyses, field, lab and computational.
+\item Delivered allergen and biosafety analyses to commercial turnaround and QA standards, from field, through lab to computational.
 \end{tightemize}
 \sectionsep
 
@@ -203,16 +233,15 @@ Czech (A2) \textbullet{} Hungarian (A2)
 \descript{| Bioinformatician}
 \location{Mar 2024 -- Jul 2024 | Prague, CZ}
 \begin{tightemize}
-\item Transcriptomics and nanopore sequencing support.
-\item Bioreactor automation and production bioinformatics support.
+\item Supported cultivated-meat cell line R\&D with transcriptomics, nanopore analyses and bioreactor automation.
 \end{tightemize}
 \sectionsep
 
 \runsubsection{Leiden University Medical Center}
-\descript{| Intern, Endocrinology Dept.}
+\descript{| Bioinformatician}
 \location{Jun 2023 -- Oct 2023 | Leiden, NL}
 \begin{tightemize}
-\item Bioinformatics support, data visualization, and pipeline creation.
+\item Contributed to two peer-reviewed publications by building the pipelines and figures for a murine MASLD study. Conducted animal research.
 \end{tightemize}
 \sectionsep
 
@@ -220,22 +249,7 @@ Czech (A2) \textbullet{} Hungarian (A2)
 \descript{| Genome Analyst}
 \location{Feb 2022 -- Jul 2022 | Poznań, PL}
 \begin{tightemize}
-\item Genome analysis interpretation. Cooperation with clinicians.
-
-\end{tightemize}
-\sectionsep
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     PROJECTS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Projects}
-\runsubsection{SPUN -- Illumina Sequencing}
-\descript{| International Grant}
-\location{Nov 2022 -- Apr 2024}
-\begin{tightemize}
-\item Predicted global biodiversity hotspots with ML.
-\item Field research video: \href{https://youtu.be/6frg_7ykXvc?t=128}{\url{https://youtu.be/6frg_7ykXvc?t=128}}.
+\item Interpreted clinical whole-genome data for personalised oncology, reporting variants to clinicians.
 \end{tightemize}
 \sectionsep
 
@@ -245,12 +259,9 @@ Czech (A2) \textbullet{} Hungarian (A2)
 
 \section{Publications}
 {\footnotesize
-\textbf{In silico analysis of Cry9 toxins and their genetic determinants in the Bacillus thuringiensis pangenome}\\
-In preparation (expected 2026). Charchuta, M. M. (first), Baranek, J. (second), et al.\\
-\textbf{Combination of dietary fiber and exercise training improves fat loss in mice but does not ameliorate MASLD more than exercise alone}\\
-American Journal of Physiology-Gastrointestinal and Liver Physiology, 2025. Kovynev, A.; Charchuta, M. M.; et al.\\
-\textbf{WED-517 Oatmeal a day does not keep the doctor away: inulin and exercise impact on MASLD amelioration and gut-liver crosstalk}\\
-Journal of Hepatology, 2024. Kovynev, A.; Charchuta, M.; et al.
+\textbf{In silico analysis of Cry9 toxins and their genetic determinants in the \textit{Bacillus thuringiensis} pangenome.} \textbf{Charchuta, M. M.} (first author), Baranek, J., et al. \textit{In preparation, 2026.}\\
+\textbf{Combination of dietary fiber and exercise training improves fat loss in mice but does not ameliorate MASLD more than exercise alone.} Kovynev, A.; \textbf{Charchuta, M. M.}; et al. \textit{Am. J. Physiol. Gastrointest. Liver Physiol.}, 2025.\\
+\textbf{WED-517 Oatmeal a day does not keep the doctor away: inulin and exercise impact on MASLD amelioration and gut-liver crosstalk.} Kovynev, A.; \textbf{Charchuta, M.}; et al. \textit{J. Hepatol.}, 2024.
 }
 
 \end{minipage}
