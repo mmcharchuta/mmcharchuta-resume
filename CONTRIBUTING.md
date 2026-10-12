@@ -44,8 +44,8 @@ Open an [Issue](../../issues) to discuss before submitting a PR.
 ### Clone and Build Locally
 
 ```bash
-git clone https://github.com/yourusername/your-resume-repo.git
-cd your-resume-repo
+git clone https://github.com/mmcharchuta/mmcharchuta-resume.git
+cd mmcharchuta-resume
 
 # Install dependencies (see README.md)
 # Then build:

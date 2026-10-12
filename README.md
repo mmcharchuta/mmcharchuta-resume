@@ -238,12 +238,12 @@ This project is licensed under the **MIT License** — see [LICENSE](./LICENSE) 
 
 ## 📬 Contact & Links
 
-- **GitHub**: [Your GitHub Profile](https://github.com/yourusername)
-- **LinkedIn**: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- **Email**: [your.email@domain.com](mailto:your.email@domain.com)
+- **GitHub**: [github.com/mmcharchuta](https://github.com/mmcharchuta)
+- **LinkedIn**: [linkedin.com/in/mmcharchuta](https://www.linkedin.com/in/mmcharchuta/)
+- **Email**: [mmcharchuta@gmail.com](mailto:mmcharchuta@gmail.com)
 
 ---
 
-**Last updated**: February 22, 2026
+**Last updated**: October 12, 2026
 
 Built with LaTeX, pride, and TeX magic. ✨
