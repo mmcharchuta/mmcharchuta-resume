@@ -15,9 +15,14 @@
 # Font files
 fonts/** binary
 
-# Shell scripts
-*.ps1 text working-tree-encoding=UTF-16LE-BOM eol=crlf
-build_resume.ps1 text working-tree-encoding=UTF-16LE-BOM eol=crlf
+# PowerShell scripts.
+# These are plain UTF-8. Do NOT add working-tree-encoding=UTF-16LE-BOM here:
+# the files on disk are not UTF-16, so git stores mojibake and "git add"
+# fails with "failed to encode ... from UTF-16LE-BOM to UTF-8".
+*.ps1 text eol=crlf
+
+# Hook scripts run under sh and must keep LF endings.
+tools/pre-commit text eol=lf
 
 # GitHub Actions
 .github/** text eol=lf

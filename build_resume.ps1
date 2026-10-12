@@ -1,1 +1,37 @@
-⑅牲潲䅣瑩潮偲敦敲敮捥‽‧却潰✍੓整ⵌ潣慴楯渠⑐卓捲楰瑒潯琍਍ਤ瑥砠㴠≍楫潬慪⁍楥獺歯⁃桡牣桵瑡⁒敳畭攮瑥砢ഊ楦 ⵮潴 呥獴ⵐ慴栠ⵌ楴敲慬偡瑨․瑥砩⤠笍ਠ⁴桲潷•䵩獳楮朠獯畲捥⁦楬攺․瑥砢ഊ納਍੬慴數浫‭硥污瑥砠⵩湴敲慣瑩潮㵮潮獴潰浯摥‭晩汥⵬楮攭敲牯爠∤瑥砢ഊ楦 ⑌䅓呅塉呃佄䔠⵮攠〩⁻ഊ†瑨牯眠≬慴數浫⁦慩汥搠睩瑨⁥硩琠捯摥․䱁協䕘䥔䍏䑅∍੽ഊഊ③慳敐摦‽⁛卹獴敭⹉伮偡瑨崺㩃桡湧故硴敮獩潮⠤瑥砬‧⹰摦✩ഊ⑤慴攠㴠⡇整ⵄ慴攩⹔潓瑲楮木❤摍䵍祹祹✬⁛卹獴敭⹇汯扡汩穡瑩潮⹃畬瑵牥䥮景崺㩉湶慲楡湴䍵汴畲攩ഊ⑤慴敤偤映㴠≍楫潬慪⁍楥獺歯⁃桡牣桵瑡⁒敳畭攠⑤慴攮灤昢ഊഊ䍯灹ⵉ瑥洠ⵌ楴敲慬偡瑨․扡獥偤映ⵄ敳瑩湡瑩潮․摡瑥摐摦‭䙯牣攍਍ਣ⁍潶攠潵瑤慴敤⁤慴敤⁐䑆猠瑯⁡牣桩癥ഊ②牣桩癥䑩爠㴠䩯楮ⵐ慴栠ⵐ慴栠⑐卓捲楰瑒潯琠ⵃ桩汤偡瑨‧慲捨楶攧ഊ楦 ⵮潴 呥獴ⵐ慴栠ⵐ慴桔祰攠䍯湴慩湥爠②牣桩癥䑩爩⤠笍ਠ⁎敷ⵉ瑥洠ⵐ慴栠②牣桩癥䑩爠ⵉ瑥浔祰攠䑩牥捴潲礠ⵆ潲捥⁼⁏畴ⵎ畬氍੽ഊഊ⌠䙩湤⁡湤⁭潶攠摡瑥搠牥獵浥猠⡦楬敳⁭慴捨楮朠灡瑴敲渺•䵩歯污樠䵩敳穫漠䍨慲捨畴愠剥獵浥⁄䑛䄭婡⵺嵛愭穝孡⵺嵙奙央灤昢⤍ੇ整ⵃ桩汤䥴敭‭偡瑨․偓卣物灴副潴‭乡浥•⨮灤昢⁼ഊ†坨敲攭佢橥捴⁻․张⵭慴捨‧䵩歯污樠䵩敳穫漠䍨慲捨畴愠剥獵浥⁜摻㉽孁ⵚ愭穝笳絜摻㑽尮灤昤✠素簍ਠ⁗桥牥ⵏ扪散琠笠⑟‭湥․摡瑥摐摦⁽⁼ഊ†䙯牅慣栭佢橥捴⁻ഊ††⑯汤偤晐慴栠㴠䩯楮ⵐ慴栠ⵐ慴栠⑐卓捲楰瑒潯琠ⵃ桩汤偡瑨․弍ਠ†⁍潶攭䥴敭‭䱩瑥牡汐慴栠⑯汤偤晐慴栠ⵄ敳瑩湡瑩潮 䩯楮ⵐ慴栠ⵐ慴栠②牣桩癥䑩爠ⵃ桩汤偡瑨․弩‭䙯牣攍ਠ†⁗物瑥ⵏ畴灵琠≁牣桩癥携․弢ഊ†納਍੗物瑥ⵏ畴灵琠≕灤慴敤㨠③慳敐摦∍੗物瑥ⵏ畴灵琠≕灤慴敤㨠⑤慴敤偤昢ഊ
+$ErrorActionPreference = 'Stop'
+Set-Location $PSScriptRoot
+
+$tex = "Mikolaj Mieszko Charchuta Resume.tex"
+if (-not (Test-Path -LiteralPath $tex)) {
+  throw "Missing source file: $tex"
+}
+
+latexmk -xelatex -interaction=nonstopmode -file-line-error "$tex"
+if ($LASTEXITCODE -ne 0) {
+  throw "latexmk failed with exit code $LASTEXITCODE"
+}
+
+$basePdf = [System.IO.Path]::ChangeExtension($tex, '.pdf')
+$date = (Get-Date).ToString('ddMMMyyyy', [System.Globalization.CultureInfo]::InvariantCulture)
+$datedPdf = "Mikolaj Mieszko Charchuta Resume $date.pdf"
+
+Copy-Item -LiteralPath $basePdf -Destination $datedPdf -Force
+
+# Move outdated dated PDFs to archive
+$archiveDir = Join-Path -Path $PSScriptRoot -ChildPath 'archive'
+if (-not (Test-Path -PathType Container $archiveDir)) {
+  New-Item -Path $archiveDir -ItemType Directory -Force | Out-Null
+}
+
+# Find and move dated resumes (files matching pattern: "Mikolaj Mieszko Charchuta Resume DD[A-Za-z][a-z][a-z]YYYY.pdf")
+Get-ChildItem -Path $PSScriptRoot -Name "*.pdf" |
+  Where-Object { $_ -match 'Mikolaj Mieszko Charchuta Resume \d{2}[A-Za-z]{3}\d{4}\.pdf$' } |
+  Where-Object { $_ -ne $datedPdf } |
+  ForEach-Object {
+    $oldPdfPath = Join-Path -Path $PSScriptRoot -ChildPath $_
+    Move-Item -LiteralPath $oldPdfPath -Destination (Join-Path -Path $archiveDir -ChildPath $_) -Force
+    Write-Output "Archived: $_"
+  }
+
+Write-Output "Updated: $basePdf"
+Write-Output "Updated: $datedPdf"

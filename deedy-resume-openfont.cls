@@ -82,3 +82,49 @@ Last Updated on \today
 \begin{itemize}\itemsep0.5pt \parskip0pt \parsep0pt}
 {\end{itemize}}
 
+
+% ---------------------------------------------------------------------
+% Profile photo (optional)
+% The photo is only drawn when \withphoto is defined, so one source can
+% build both variants, e.g.:
+%   latexmk -xelatex -usepretex="\def\withphoto{}" file.tex
+% \resumephoto[<diameter>]{<x offset>}{<y offset>} places a circular photo
+% at an absolute position on the first page (offsets from top-left corner).
+% ---------------------------------------------------------------------
+\usepackage{graphicx}
+\usepackage{tikz}
+\providecommand{\photofile}{assets/profile-photo.jpg}
+\newcommand{\resumephoto}[3][23mm]{%
+  \ifdefined\withphoto
+  \begin{textblock*}{#1}(#2,#3)
+  \begin{tikzpicture}
+    \begin{scope}
+      \clip (0,0) circle ({#1/2});
+      \node[inner sep=0pt] at (0,0) {\includegraphics[width=#1]{\photofile}};
+    \end{scope}
+    \draw[headings, line width=0.5pt] (0,0) circle ({#1/2});
+  \end{tikzpicture}
+  \end{textblock*}
+  \fi}
+
+% ---------------------------------------------------------------------
+% Multi-page helpers
+% ---------------------------------------------------------------------
+\usepackage{lastpage}
+% Footer with name and page x/y for resumes longer than one page
+\newcommand{\pagefooter}[1]{%
+  \fancyfoot[C]{\color{date}\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{7.5pt}{9pt}\selectfont #1 \textbullet{} page \thepage{} of \pageref*{LastPage}}}
+
+% Full-width entry: title | role on the left, dates/place on the right
+\newcommand{\cventry}[3]{%
+  \par\noindent{\color{subheadings}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{11pt}{13pt}\selectfont\uppercase{#1}}%
+  {\color{subheadings}\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{13pt}\selectfont\ #2}%
+  \hfill{\color{headings}\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{9pt}{13pt}\selectfont #3}\par\normalfont}
+
+% Opt-in fix for the stray blank line between \location and a following
+% bullet list: zero the list top spacing and end the location line with par.
+% (Not applied by default so the general resume keeps its approved layout.)
+\newcommand{\fixlocationgap}{%
+  \RequirePackage{enumitem}\setlist[itemize]{topsep=0pt}%
+  \renewcommand{\location}[1]{%
+    \color{headings}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{9pt}{10.5pt}\selectfont {##1\par} \normalfont}}

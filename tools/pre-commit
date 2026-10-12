@@ -1,0 +1,63 @@
+#!/bin/sh
+# Pre-commit guard for a PUBLIC resume repository.
+#
+# Blocks a commit when staged content looks like per-application material:
+# tailored resumes, cover letters, recruiter emails or the profile photo.
+#
+# Install:  .\tools\install-hooks.ps1     (or copy this file to .git/hooks/)
+#
+# This is a backstop, not the main safeguard. The main safeguard is keeping
+# private material outside the repository entirely (see README).
+#
+# Override for one commit, only if you are certain:  git commit --no-verify
+
+staged=$(git diff --cached --name-only --diff-filter=ACMR)
+[ -z "$staged" ] && exit 0
+
+fail=0
+report() {
+  if [ "$fail" -eq 0 ]; then
+    echo "pre-commit: refusing to commit. This repository is public."
+    echo
+  fi
+  fail=1
+  echo "  $1"
+  echo "      $2"
+}
+
+# --- 1. Paths that should never be committed ------------------------------
+for f in $staged; do
+  case "$f" in
+    tailored/*|output/*|assets/*|resume-private/*|archive/*)
+      report "$f" "private or archived path" ;;
+    *cover-letter*|*application-message*|*application-letter*|email-*.md)
+      report "$f" "looks like application correspondence" ;;
+    *.jpg|*.jpeg|*.png|*.heic)
+      report "$f" "image file; the profile photo must stay out of the public repo" ;;
+  esac
+done
+
+# --- 2. Letter-like content under an innocent-looking filename ------------
+# Markers are anchored or specific enough not to fire on documentation that
+# merely discusses the policy. The repo's own docs are exempt outright.
+markers='^dear [a-z]|^(yours sincerely|kind regards|best regards|warm regards)|why i.?d be a great fit|(initiative|speculative) application'
+for f in $staged; do
+  case "$f" in
+    README.md|CONTRIBUTING.md|LICENSE|tools/*) continue ;;
+  esac
+  case "$f" in
+    *.tex|*.md|*.txt)
+      if git show ":$f" 2>/dev/null | grep -Eiq "$markers"; then
+        report "$f" "reads like a letter or application; move it to ../resume-private/"
+      fi ;;
+  esac
+done
+
+if [ "$fail" -ne 0 ]; then
+  echo
+  echo "  Move the file to ../resume-private/ and commit again."
+  echo "  To override once: git commit --no-verify"
+  exit 1
+fi
+
+exit 0

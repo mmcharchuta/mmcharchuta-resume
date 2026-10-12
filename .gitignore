@@ -1,4 +1,33 @@
+# =====================================================================
+# This repository is PUBLIC.
+#
+# Per-application material (tailored resumes, cover letters, emails) and
+# the profile photo live OUTSIDE this repository, by default in
+# ../resume-private/. Keeping them out of the working tree is the real
+# safeguard: git cannot commit a file it cannot see.
+#
+# The entries below are a second line of defence, in case any of those
+# folders is ever recreated here by mistake. A pre-commit hook in
+# tools/pre-commit is the third. See README.
+# =====================================================================
+tailored/
+output/
+assets/
+resume-private/
+*cover-letter*
+*application-message*
+*application-letter*
+email-*.md
+
+# Version snapshots. Git history already records every past version, so
+# dated copies are not published.
+archive/
+*Resume\ [0-9][0-9][A-Za-z][a-z][a-z][0-9][0-9][0-9][0-9].pdf
+Resume_*.pdf
+
+# =====================================================================
 # LaTeX build artifacts
+# =====================================================================
 *.aux
 *.fdb_latexmk
 *.fls
@@ -24,6 +53,11 @@ dist/
 .DS_Store
 Thumbs.db
 
-# Keep the main PDFs and dated versions
+# =====================================================================
+# PUBLIC exceptions: the current general resume and CV only.
+# These negations name individual files on purpose. Never broaden them to
+# a wildcard such as !output/**/*.pdf, which would expose tailored work.
+# =====================================================================
 !Mikolaj\ Mieszko\ Charchuta\ Resume.pdf
-!Mikolaj\ Mieszko\ Charchuta\ Resume\ *.pdf
+!variants/Charchuta_Mikolaj_Resume_2page.pdf
+!variants/Charchuta_Mikolaj_CV_full.pdf

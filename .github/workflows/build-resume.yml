@@ -19,7 +19,10 @@ jobs:
       - name: Install LaTeX and dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-latex-extra latexmk
+          # texlive-pictures provides tikz/pgf, required by the class file
+          # for the optional circular profile photo.
+          sudo apt-get install -y texlive-xetex texlive-fonts-recommended \
+            texlive-latex-recommended texlive-latex-extra texlive-pictures latexmk
       
       - name: Install custom fonts
         run: |

@@ -8,11 +8,16 @@ A modern, LaTeX-based resume showcasing education, research experience, and tech
 
 ## 📄 View the Resume
 
-**[Download Latest Resume PDF](./Mikolaj%20Mieszko%20Charchuta%20Resume.pdf)**
+Three lengths are published, all built from the same class file and fonts:
 
-The resume is generated automatically with a timestamped version on each update:
-- **Latest**: `Mikolaj Mieszko Charchuta Resume.pdf` — Always reflects current source
-- **Dated snapshots**: `Resume_22Feb2026.pdf` — Version history for tracking
+| Version | Pages | Download |
+|---|---|---|
+| Resume, one page | 1 | [PDF](./Mikolaj%20Mieszko%20Charchuta%20Resume.pdf) |
+| Resume, two pages | 2 | [PDF](./variants/Charchuta_Mikolaj_Resume_2page.pdf) |
+| Full CV | 3 | [PDF](./variants/Charchuta_Mikolaj_CV_full.pdf) |
+
+The one-page resume rebuilds automatically on every push to the source. Past
+versions are in the git history rather than in dated copies.
 
 ## ✨ Features
 
@@ -57,6 +62,61 @@ This will:
 2. Generate `Mikolaj Mieszko Charchuta Resume.pdf`
 3. Create a timestamped version: `Resume_ddMMMYYYY.pdf` (e.g., `Resume_22Feb2026.pdf`)
 
+### Building all three lengths
+
+```powershell
+.\build_variants.ps1                    # the three public PDFs, plus private targets
+.\build_variants.ps1 -Scope public      # only the PDFs committed to this repo
+.\build_variants.ps1 -WithPhoto         # also build versions with a profile photo
+```
+
+Public sources and their committed PDFs:
+
+| Source | Output |
+|---|---|
+| `Mikolaj Mieszko Charchuta Resume.tex` | `Mikolaj Mieszko Charchuta Resume.pdf` |
+| `variants/resume-2page.tex` | `variants/Charchuta_Mikolaj_Resume_2page.pdf` |
+| `variants/cv-full.tex` | `variants/Charchuta_Mikolaj_CV_full.pdf` |
+
+The script picks a working `latexmk` automatically, which matters when a
+half-finished MiKTeX update leaves a broken copy first on `PATH`. Override it
+with `-MiktexBin`. Intermediate files go to `build/`.
+
+### Private material stays outside this repository
+
+This repository is public, so per-application resumes, cover letters and the
+profile photo are **not** kept here. They live in a sibling folder, by default
+`../resume-private/`:
+
+```
+resume-private/
+  assets/profile-photo.jpg
+  applications/<company>/resume-1page.tex, resume-2page.tex, cv-full.tex
+  output/<company>/...
+```
+
+```powershell
+.\build_variants.ps1 -Scope private                 # all private targets
+.\build_variants.ps1 -Target <company> -WithPhoto   # one of them
+```
+
+Point the script elsewhere with `-PrivateRoot`. It refuses any path that
+resolves inside the repository. Anything built **with** the photo is written to
+the private output folder, never here.
+
+Three independent safeguards keep private material unpublished:
+
+1. **Location.** Git cannot commit files outside its working tree. This is the
+   one that actually matters.
+2. **`.gitignore`.** Blocks `tailored/`, `output/`, `assets/`, correspondence and
+   images, should any reappear here.
+3. **A pre-commit hook.** Install once per clone with `.\tools\install-hooks.ps1`.
+   It refuses commits touching those paths or containing cover-letter wording.
+
+**Photo.** A source calls `\resumephoto[<size>]{<x>}{<y>}` and the photo is drawn
+only when the build defines `\withphoto`, so one source yields both versions.
+The image itself is private, so the published PDFs have no photo.
+
 ### Manual Build (Linux/macOS)
 
 ```bash
@@ -67,17 +127,28 @@ latexmk -xelatex "Mikolaj Mieszko Charchuta Resume.tex"
 
 ```
 .
-├── Mikolaj Mieszko Charchuta Resume.tex    Main resume source file
+├── Mikolaj Mieszko Charchuta Resume.tex    One-page resume source
+├── Mikolaj Mieszko Charchuta Resume.pdf    One-page resume, compiled
+├── variants/
+│   ├── resume-2page.tex                    Two-page resume source
+│   ├── cv-full.tex                         Full CV source
+│   └── *.pdf                               Compiled output
 ├── deedy-resume-openfont.cls               Deedy template class (patched)
-├── build_resume.ps1                        Automated build script
+├── build_variants.ps1                      Builds all lengths
+├── build_resume.ps1                        Builds the one-pager only
+├── tools/
+│   ├── pre-commit                          Guard against publishing private files
+│   └── install-hooks.ps1                   Installs the hook into .git/hooks
 ├── latexmkrc                               Build configuration
 ├── fonts/                                  OpenType fonts
 │   ├── lato/
 │   └── raleway/
 ├── README.md                               This file
-├── LICENSE                                 MIT License
-└── Mikolaj Mieszko Charchuta Resume*.pdf   Compiled output
+└── LICENSE                                 MIT License
 ```
+
+Not in this repository, by design: `../resume-private/` holds tailored
+resumes, cover letters and the profile photo.
 
 ## 🔧 Customization
 
