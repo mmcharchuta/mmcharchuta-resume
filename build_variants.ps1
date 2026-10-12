@@ -75,7 +75,12 @@ Write-Output "Using latexmk: $((Get-Command latexmk).Source)"
 if ($PrivateRoot -eq '') {
   $PrivateRoot = Join-Path (Split-Path $PSScriptRoot -Parent) 'resume-private'
 }
-$photo = Join-Path $PrivateRoot 'assets/profile-photo.jpg'
+# Profile photo: prefer the copy published in this repo, fall back to the
+# private folder for anyone who keeps it out of version control.
+$photo = Join-Path $PSScriptRoot 'assets/profile-photo.jpg'
+if (-not (Test-Path -LiteralPath $photo)) {
+  $photo = Join-Path $PrivateRoot 'assets/profile-photo.jpg'
+}
 $photoTeX = ($photo -replace '\\', '/')
 
 # --- Guard: never let private paths resolve inside the repository ----------
@@ -90,18 +95,19 @@ if ($privFull.StartsWith($repoFull, [StringComparison]::OrdinalIgnoreCase)) {
 $jobs = @()
 
 if ($Scope -in @('all','public')) {
+  # PhotoName is the base name used for the version that includes the photo.
+  # All photo versions live in variants/ so the repo root stays tidy.
   $publicSet = @(
-    @{ Source = 'Mikolaj Mieszko Charchuta Resume.tex'; Out = '.';         Name = 'Mikolaj Mieszko Charchuta Resume' },
-    @{ Source = 'variants/resume-2page.tex';            Out = 'variants';  Name = 'Charchuta_Mikolaj_Resume_2page' },
-    @{ Source = 'variants/cv-full.tex';                 Out = 'variants';  Name = 'Charchuta_Mikolaj_CV_full' }
+    @{ Source = 'Mikolaj Mieszko Charchuta Resume.tex'; Out = '.';        Name = 'Mikolaj Mieszko Charchuta Resume'; PhotoName = 'Charchuta_Mikolaj_Resume_1page_photo' },
+    @{ Source = 'variants/resume-2page.tex';            Out = 'variants'; Name = 'Charchuta_Mikolaj_Resume_2page';   PhotoName = 'Charchuta_Mikolaj_Resume_2page_photo' },
+    @{ Source = 'variants/cv-full.tex';                 Out = 'variants'; Name = 'Charchuta_Mikolaj_CV_full';        PhotoName = 'Charchuta_Mikolaj_CV_full_photo' }
   )
   foreach ($p in $publicSet) {
     if (-not (Test-Path -LiteralPath $p.Source)) { continue }
     # Public PDFs are committed, so they are always built without the photo.
     $jobs += [pscustomobject]@{ Source = $p.Source; Out = $p.Out; Name = $p.Name; Photo = $false; Build = "build/public" }
     if ($WithPhoto) {
-      # Photo versions never enter the repository.
-      $jobs += [pscustomobject]@{ Source = $p.Source; Out = (Join-Path $PrivateRoot 'output/general'); Name = "$($p.Name)_photo"; Photo = $true; Build = (Join-Path $PrivateRoot 'build/general') }
+      $jobs += [pscustomobject]@{ Source = $p.Source; Out = 'variants'; Name = $p.PhotoName; Photo = $true; Build = "build/public" }
     }
   }
 }

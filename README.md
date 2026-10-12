@@ -8,13 +8,18 @@ A modern, LaTeX-based resume showcasing education, research experience, and tech
 
 ## 📄 View the Resume
 
-Three lengths are published, all built from the same class file and fonts:
+Three lengths are published, each with and without a profile photo. All six are
+built from the same class file and fonts.
 
-| Version | Pages | Download |
-|---|---|---|
-| Resume, one page | 1 | [PDF](./Mikolaj%20Mieszko%20Charchuta%20Resume.pdf) |
-| Resume, two pages | 2 | [PDF](./variants/Charchuta_Mikolaj_Resume_2page.pdf) |
-| Full CV | 3 | [PDF](./variants/Charchuta_Mikolaj_CV_full.pdf) |
+| Version | Pages | Plain | With photo |
+|---|---|---|---|
+| Resume, one page | 1 | [PDF](./Mikolaj%20Mieszko%20Charchuta%20Resume.pdf) | [PDF](./variants/Charchuta_Mikolaj_Resume_1page_photo.pdf) |
+| Resume, two pages | 2 | [PDF](./variants/Charchuta_Mikolaj_Resume_2page.pdf) | [PDF](./variants/Charchuta_Mikolaj_Resume_2page_photo.pdf) |
+| Full CV | 3 | [PDF](./variants/Charchuta_Mikolaj_CV_full.pdf) | [PDF](./variants/Charchuta_Mikolaj_CV_full_photo.pdf) |
+
+A photo is customary on applications in the German-speaking countries and in
+much of continental Europe. It is best left off in the UK, Ireland and the US,
+where employers often discard CVs carrying one.
 
 The one-page resume rebuilds automatically on every push to the source. Past
 versions are in the git history rather than in dated copies.
@@ -72,11 +77,14 @@ This will:
 
 Public sources and their committed PDFs:
 
-| Source | Output |
-|---|---|
-| `Mikolaj Mieszko Charchuta Resume.tex` | `Mikolaj Mieszko Charchuta Resume.pdf` |
-| `variants/resume-2page.tex` | `variants/Charchuta_Mikolaj_Resume_2page.pdf` |
-| `variants/cv-full.tex` | `variants/Charchuta_Mikolaj_CV_full.pdf` |
+| Source | Plain output | Photo output |
+|---|---|---|
+| `Mikolaj Mieszko Charchuta Resume.tex` | `Mikolaj Mieszko Charchuta Resume.pdf` | `variants/Charchuta_Mikolaj_Resume_1page_photo.pdf` |
+| `variants/resume-2page.tex` | `variants/Charchuta_Mikolaj_Resume_2page.pdf` | `variants/Charchuta_Mikolaj_Resume_2page_photo.pdf` |
+| `variants/cv-full.tex` | `variants/Charchuta_Mikolaj_CV_full.pdf` | `variants/Charchuta_Mikolaj_CV_full_photo.pdf` |
+
+Every photo version lands in `variants/`, so the repo root holds only the
+one-page resume.
 
 The script picks a working `latexmk` automatically, which matters when a
 half-finished MiKTeX update leaves a broken copy first on `PATH`. Override it
@@ -84,13 +92,11 @@ with `-MiktexBin`. Intermediate files go to `build/`.
 
 ### Private material stays outside this repository
 
-This repository is public, so per-application resumes, cover letters and the
-profile photo are **not** kept here. They live in a sibling folder, by default
-`../resume-private/`:
+This repository is public, so per-application resumes and cover letters are
+**not** kept here. They live in a sibling folder, by default `../resume-private/`:
 
 ```
 resume-private/
-  assets/profile-photo.jpg
   applications/<company>/resume-1page.tex, resume-2page.tex, cv-full.tex
   output/<company>/...
 ```
@@ -101,21 +107,21 @@ resume-private/
 ```
 
 Point the script elsewhere with `-PrivateRoot`. It refuses any path that
-resolves inside the repository. Anything built **with** the photo is written to
-the private output folder, never here.
+resolves inside the repository.
 
-Three independent safeguards keep private material unpublished:
+Three independent safeguards keep per-application material unpublished:
 
 1. **Location.** Git cannot commit files outside its working tree. This is the
    one that actually matters.
-2. **`.gitignore`.** Blocks `tailored/`, `output/`, `assets/`, correspondence and
-   images, should any reappear here.
+2. **`.gitignore`.** Blocks `tailored/`, `output/`, correspondence and images,
+   should any appear here. Only `assets/profile-photo.jpg` is exempt.
 3. **A pre-commit hook.** Install once per clone with `.\tools\install-hooks.ps1`.
    It refuses commits touching those paths or containing cover-letter wording.
 
 **Photo.** A source calls `\resumephoto[<size>]{<x>}{<y>}` and the photo is drawn
 only when the build defines `\withphoto`, so one source yields both versions.
-The image itself is private, so the published PDFs have no photo.
+The build prefers `assets/profile-photo.jpg` from this repo and falls back to the
+private folder, so a fork without the image still builds the plain versions.
 
 ### Manual Build (Linux/macOS)
 
@@ -132,7 +138,9 @@ latexmk -xelatex "Mikolaj Mieszko Charchuta Resume.tex"
 ├── variants/
 │   ├── resume-2page.tex                    Two-page resume source
 │   ├── cv-full.tex                         Full CV source
-│   └── *.pdf                               Compiled output
+│   └── *.pdf                               Compiled output, plain and with photo
+├── assets/
+│   └── profile-photo.jpg                   Photo used by the photo variants
 ├── deedy-resume-openfont.cls               Deedy template class (patched)
 ├── build_variants.ps1                      Builds all lengths
 ├── build_resume.ps1                        Builds the one-pager only

@@ -28,12 +28,16 @@ report() {
 # --- 1. Paths that should never be committed ------------------------------
 for f in $staged; do
   case "$f" in
+    # Allowed first: case matches in order, so this must precede assets/*.
+    # Published deliberately; the photo variants embed it anyway.
+    assets/profile-photo.jpg)
+      ;;
     tailored/*|output/*|assets/*|resume-private/*|archive/*)
       report "$f" "private or archived path" ;;
     *cover-letter*|*application-message*|*application-letter*|email-*.md)
       report "$f" "looks like application correspondence" ;;
     *.jpg|*.jpeg|*.png|*.heic)
-      report "$f" "image file; the profile photo must stay out of the public repo" ;;
+      report "$f" "unexpected image; only assets/profile-photo.jpg is published" ;;
   esac
 done
 

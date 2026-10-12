@@ -12,7 +12,8 @@
 # =====================================================================
 tailored/
 output/
-assets/
+assets/*
+!assets/profile-photo.jpg
 resume-private/
 *cover-letter*
 *application-message*
@@ -61,3 +62,6 @@ Thumbs.db
 !Mikolaj\ Mieszko\ Charchuta\ Resume.pdf
 !variants/Charchuta_Mikolaj_Resume_2page.pdf
 !variants/Charchuta_Mikolaj_CV_full.pdf
+!variants/Charchuta_Mikolaj_Resume_1page_photo.pdf
+!variants/Charchuta_Mikolaj_Resume_2page_photo.pdf
+!variants/Charchuta_Mikolaj_CV_full_photo.pdf
