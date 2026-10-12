@@ -52,6 +52,9 @@
 \pagestyle{fancy}
 \fancyhf{}
  
+% Shared facts: dates, roles, links, publications. Edit them in one place.
+\input{shared/facts}
+
 \begin{document}
 
 \renewcommand{\sectionsep}{\vspace{2pt}}
@@ -91,20 +94,20 @@
 
 \subsection{BOKU, Vienna}
 \descript{MSc Bioinformatics (Erasmus)}
-\location{Sep 2026 -- Jul 2027}
+\location{\WhenBoku{}}
 {\footnotesize Academic exchange; thesis project with Prof. Christian Stauffer.}\\
 \sectionsep
 
 \subsection{AMU, Poznan}
 \descript{MSc in Bioinformatics}
-\location{Oct 2025 -- Jul 2027}
-{\footnotesize Thesis: \textit{In silico analysis of Cry9 toxins and their genetic determinants in the Bacillus thuringiensis pangenome} (first-author article in preparation).}\\
+\location{\WhenAmuMsc{}}
+{\footnotesize Thesis: \ThesisMsc{} (first-author article in preparation).}\\
 \sectionsep
 
 \subsection{AMU, Poznan}
 \descript{BSc in Bioinformatics \& Biotechnology}
-\location{Oct 2021 -- Sep 2025}
-{\footnotesize Thesis: \textit{naïve methods for taxonomic classification from marker genes} --- released as the \href{https://github.com/mmcharchuta/NaiveR}{NaïveR R package}.}\\
+\location{\WhenAmuBsc{}}
+{\footnotesize Thesis: \textit{naïve methods for taxonomic classification from marker genes} --- released as the \href{\MyNaiveRURL{}}{NaïveR R package}.}\\
 \sectionsep
 
 \subsection{Research Exchanges}
@@ -140,13 +143,11 @@ Transcriptomics (DESeq2) \textbullet{} metagenomics \\
 \subsection{Grants}
 Study@Research, AMU (2026--27) \\
 SPUN intl. grant (2022--24): ML for soil \\
-biodiversity hotspots (\href{https://youtu.be/6frg_7ykXvc?t=128}{field video})
+biodiversity hotspots (\href{\MySpunVideoURL{}}{field video})
 \sectionsep
 
 \subsection{Languages}
-English (C2) \textbullet{} Polish (Native)  \\
-German (B2) \textbullet{} French (B2) \\
-Czech (A2) \textbullet{} Hungarian (A2)
+\LanguagesStacked{}
 \sectionsep
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -161,13 +162,13 @@ Czech (A2) \textbullet{} Hungarian (A2)
 
 \subsection{CRABS 2026 / Health Intel.}
 \descript{Invited Speaker \& Workshop Lead}
-\location{Aug 2026 | Kyiv, UA}
+\location{\WhenCrabs{}}
 {\footnotesize Lecture on \textit{Reproducibility in Computational Genomics}; 2 Nextflow pipeline workshops; talk on Meta Hi-C \& ML for bacterial genomes.}\\
 \sectionsep
 
 \subsection{Bioinf. Community PL}
 \descript{Co-organiser}
-\location{2024 -- Present}
+\location{\WhenBioinfPl{}}
 {\footnotesize Event coordination, website, open-science advocacy.}\\
 \sectionsep
 
@@ -197,8 +198,8 @@ Czech (A2) \textbullet{} Hungarian (A2)
 \section{Experience}
 
 \runsubsection{Phagos}
-\descript{| Bioinformatician}
-\location{Jul 2026 -- Present | Remote / Paris, FR}
+\descript{| \RolePhagos}
+\location{\WhenPhagos}
 \begin{tightemize}
 \item Deliver phage--host association calls into the therapeutic discovery pipeline by analysing Meta Hi-C data end-to-end, from raw reads to ranked pairings.
 \item Made analyses re-runnable and free of environment drift by rebuilding ad-hoc scripts as containerised Nextflow workflows (Docker, Conda) used across the R\&D team.
@@ -210,15 +211,15 @@ Czech (A2) \textbullet{} Hungarian (A2)
 \descript{| Contract Researcher}
 \location{Sep 2025 -- Jan 2028 | Remote / Poznań, PL}
 \begin{tightemize}
-\item Won competitive Study@Research funding (app. nr. 201/34/UAM/0074) to run an independent project on the 3D genome of \textit{B. thuringiensis}, owning Hi-C library prep, sequencing and analysis solo.
+\item Won competitive Study@Research funding (\GrantStudyAtResearch{}) to run an independent project on the 3D genome of \textit{B. thuringiensis}, owning Hi-C library prep, sequencing and analysis solo.
 \item Produced the dataset behind a first-author manuscript by mining the \textit{B. thuringiensis} pangenome for Cry9 toxin determinants.
 \item Standardised the group's Hi-C/3C-seq analysis with reusable containerised workflows for contact-map QC and scaffolding.
 \end{tightemize}
 \sectionsep
 
 \runsubsection{Danube Int. School Vienna}
-\descript{| Laboratory Tech / Science Mentor}
-\location{Jun 2026 -- Aug 2028 | Vienna, AT}
+\descript{| \RoleDanube}
+\location{\WhenDanube}
 \begin{tightemize}
 \item Teach science through practical experiment: design and run hands-on labs, and mentor students through independent research projects.
 \end{tightemize}
@@ -233,16 +234,16 @@ Czech (A2) \textbullet{} Hungarian (A2)
 \sectionsep
 
 \runsubsection{Bene Meat Technologies}
-\descript{| Bioinformatician}
-\location{Mar 2024 -- Jul 2024 | Prague, CZ}
+\descript{| \RoleBeneMeat}
+\location{\WhenBeneMeat}
 \begin{tightemize}
 \item Supported cultivated-meat cell line R\&D with transcriptomics, nanopore analyses and bioreactor automation.
 \end{tightemize}
 \sectionsep
 
 \runsubsection{Leiden University Medical Center}
-\descript{| Bioinformatician}
-\location{Jun 2023 -- Oct 2023 | Leiden, NL}
+\descript{| \RoleLumc}
+\location{\WhenLumc}
 \begin{tightemize}
 \item Contributed to two peer-reviewed publications by building the pipelines and figures for a murine MASLD study. Conducted animal research.
 \end{tightemize}
@@ -262,14 +263,14 @@ Czech (A2) \textbullet{} Hungarian (A2)
 
 \section{Publications}
 {\footnotesize
-\textbf{In silico analysis of Cry9 toxins and their genetic determinants in the \textit{Bacillus thuringiensis} pangenome.} \textbf{Charchuta, M. M.} (first author), Baranek, J., et al. \textit{In preparation, 2026.}\\
-\textbf{Combination of dietary fiber and exercise training improves fat loss in mice but does not ameliorate MASLD more than exercise alone.} Kovynev, A.; \textbf{Charchuta, M. M.}; et al. \textit{Am. J. Physiol. Gastrointest. Liver Physiol.}, 2025.\\
-\textbf{WED-517 Oatmeal a day does not keep the doctor away: inulin and exercise impact on MASLD amelioration and gut-liver crosstalk.} Kovynev, A.; \textbf{Charchuta, M.}; et al. \textit{J. Hepatol.}, 2024.
+\PubCry{}\\
+\PubAjp{}\\
+\PubHep{}
 }
 
 \end{minipage}
 
 \vspace*{\fill}
-\noindent{\tiny I consent to the use of my personal data for recruitment purposes, in line with the GDPR (EU) 2016/679. My information will be stored and processed solely for the duration of the hiring process.}
+\noindent{\tiny \GdprNotice{}}
 
 \end{document}

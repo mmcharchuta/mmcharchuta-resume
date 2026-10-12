@@ -21,6 +21,9 @@
 % Small descriptive line under an entry
 \newcommand{\entrynote}[1]{{\footnotesize\color{headings}#1}\par}
 
+% Shared facts: dates, roles, links, publications. Edit them in one place.
+\input{shared/facts}
+
 \begin{document}
 
 \resumephoto[21mm]{10mm}{4.5mm}
@@ -28,7 +31,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     TITLE NAME
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\namesection{Mikołaj Mieszko}{Charchuta}{ \urlstyle{same}\href{https://www.github.com/mmcharchuta}{github.com/mmcharchuta} | \href{https://www.linkedin.com/in/mmcharchuta/}{linkedin.com/in/mmcharchuta/}\\ +48 730 359 228 | \href{mailto:mmcharchuta@gmail.com}{mmcharchuta@gmail.com} | Vienna, Austria (open to remote, hybrid, relocation)
+\namesection{Mikołaj Mieszko}{Charchuta}{ \MyContactLinks{} | Vienna, Austria (open to remote, hybrid, relocation)
 }
 \raggedright
 
@@ -51,7 +54,7 @@ Three publications and invited teaching on reproducibility; EU remote-first, ope
 
 \section{Experience}
 
-\cventry{Phagos}{| Bioinformatician}{Jul 2026 -- Present | Remote / Paris, FR}
+\cventry{Phagos}{| \RolePhagos}{\WhenPhagos}
 \entrynote{Phage-therapy company}
 \begin{tightemize}
 \item Deliver phage--host association calls into the therapeutic discovery pipeline by analysing Meta Hi-C data end-to-end, from raw reads to ranked pairings.
@@ -63,14 +66,14 @@ Three publications and invited teaching on reproducibility; EU remote-first, ope
 \cventry{AMU, Dept. of Microbiology}{| Contract Researcher}{Sep 2025 -- Jan 2028 | Remote / Poznań, PL}
 \entrynote{Genomes of insect pests and biopesticidal microbes}
 \begin{tightemize}
-\item Won competitive Study@Research funding (app. nr. 201/34/UAM/0074) to run an independent project on the 3D genome of \textit{B. thuringiensis}, owning Hi-C library prep, sequencing and analysis solo.
+\item Won competitive Study@Research funding (\GrantStudyAtResearch{}) to run an independent project on the 3D genome of \textit{B. thuringiensis}, owning Hi-C library prep, sequencing and analysis solo.
 \item Produced the dataset behind a first-author manuscript by mining the \textit{B. thuringiensis} pangenome for Cry9 toxin determinants, linking gene variants to predicted protein features.
 \item Combine comparative genomics with predictive protein design for insecticidal Cry toxins.
 \item Standardised the group's Hi-C/3C-seq analysis with reusable containerised workflows for contact-map QC and scaffolding.
 \end{tightemize}
 \entrysep
 
-\cventry{Danube International School}{| Laboratory Tech / Science Mentor}{Jun 2026 -- Aug 2028 | Vienna, AT}
+\cventry{Danube International School}{| \RoleDanube}{\WhenDanube}
 \entrynote{International school, secondary science}
 \begin{tightemize}
 \item Design and run hands-on science labs; mentor students through independent research projects.
@@ -85,7 +88,7 @@ Three publications and invited teaching on reproducibility; EU remote-first, ope
 \end{tightemize}
 \entrysep
 
-\cventry{Bene Meat Technologies}{| Bioinformatician}{Mar 2024 -- Jul 2024 | Prague, CZ}
+\cventry{Bene Meat Technologies}{| \RoleBeneMeat}{\WhenBeneMeat}
 \entrynote{Cultivated pet food manufacturer}
 \begin{tightemize}
 \item Provided end-to-end bioinformatics support to cultivated-meat cell-line R\&D.
@@ -94,7 +97,7 @@ Three publications and invited teaching on reproducibility; EU remote-first, ope
 \end{tightemize}
 \entrysep
 
-\cventry{Leiden University Medical Center}{| Bioinformatician}{Jun 2023 -- Oct 2023 | Leiden, NL}
+\cventry{Leiden University Medical Center}{| \RoleLumc}{\WhenLumc}
 \entrynote{Endocrinology Department}
 \begin{tightemize}
 \item Contributed to two peer-reviewed publications by building the pipelines and figures for a murine MASLD study.
@@ -123,26 +126,26 @@ Three publications and invited teaching on reproducibility; EU remote-first, ope
 \end{tightemize}
 \entrysep
 
-\cventry{DynaMAP nanopore profiling}{| Team lead}{Oct 2023 -- Oct 2025 | AMU grant for talented students}
+\cventry{DynaMAP nanopore profiling}{| Team lead}{\WhenDynamap{} | AMU grant for talented students}
 \begin{tightemize}
 \item Led a student team in funded BSc thesis projects benchmarking a new nanopore-based microbiome profiling technique against established standards, showing its potential to lower costs.
 \end{tightemize}
 \entrysep
 
-\cventry{SPUN global soil mapping}{| Researcher}{Nov 2022 -- Apr 2024 | International grant}
+\cventry{SPUN global soil mapping}{| Researcher}{\WhenSpun{} | International grant}
 \begin{tightemize}
-\item Predicted soil biodiversity hotspots with machine learning on Illumina data for a global mapping project (\href{https://youtu.be/6frg_7ykXvc?t=128}{field video}).
+\item Predicted soil biodiversity hotspots with machine learning on Illumina data for a global mapping project (\href{\MySpunVideoURL{}}{field video}).
 \end{tightemize}
 \entrysep
 
-\cventry{Trees of the Future}{| Team member}{Oct 2021 -- Oct 2023 | AMU team grant}
+\cventry{Trees of the Future}{| Team member}{\WhenTrees{} | AMU team grant}
 \begin{tightemize}
 \item Identified interaction hubs between soil microorganisms using Ion Torrent sequencing.
 \item Awarded best poster at the national metagenomics symposium; article in preparation.
 \end{tightemize}
 \entrysep
 
-\cventry{NaïveR}{| Open-source R package}{\href{https://github.com/mmcharchuta/NaiveR}{github.com/mmcharchuta/NaiveR}}
+\cventry{NaïveR}{| Open-source R package}{\href{\MyNaiveRURL{}}{github.com/mmcharchuta/NaiveR}}
 \begin{tightemize}
 \item Naïve methods for taxonomic classification from marker genes, released from my BSc thesis.
 \end{tightemize}
@@ -153,19 +156,19 @@ Three publications and invited teaching on reproducibility; EU remote-first, ope
 
 \section{Education}
 
-\cventry{BOKU University, Vienna}{| MSc Bioinformatics (Erasmus exchange)}{Sep 2026 -- Jul 2027}
+\cventry{BOKU University, Vienna}{| MSc Bioinformatics (Erasmus exchange)}{\WhenBoku{}}
 \entrynote{Thesis project with Prof. Christian Stauffer.}
 \entrysep
 
-\cventry{Adam Mickiewicz University, Poznań}{| MSc in Bioinformatics}{Oct 2025 -- Jul 2027}
-\entrynote{Thesis: \textit{In silico analysis of Cry9 toxins and their genetic determinants in the Bacillus thuringiensis pangenome} (first-author article in preparation).}
+\cventry{Adam Mickiewicz University, Poznań}{| MSc in Bioinformatics}{\WhenAmuMsc{}}
+\entrynote{Thesis: \ThesisMsc{} (first-author article in preparation).}
 \entrysep
 
-\cventry{Adam Mickiewicz University, Poznań}{| BSc in Bioinformatics \& Biotechnology}{Oct 2021 -- Sep 2025}
-\entrynote{Thesis: \textit{naïve methods for taxonomic classification from marker genes}, released as the \href{https://github.com/mmcharchuta/NaiveR}{NaïveR R package}.}
+\cventry{Adam Mickiewicz University, Poznań}{| BSc in Bioinformatics \& Biotechnology}{\WhenAmuBsc{}}
+\entrynote{Thesis: \textit{naïve methods for taxonomic classification from marker genes}, released as the \href{\MyNaiveRURL{}}{NaïveR R package}.}
 \entrysep
 
-\cventry{Charles University, Prague}{| Erasmus+ research exchange}{Winter 2022/23 \textbullet{} Summer 2023/24}
+\cventry{Charles University, Prague}{| Erasmus+ research exchange}{\WhenCharles{}}
 \begin{tightemize}
 \item \textbf{Institute of Microbiology, Czech Academy of Sciences:} stable isotope probing of polar soil microbes for carbon tracking; meta-omics.
 \item \textbf{BIOCEV:} alternative splicing analysis (rMATS) on human RNA-seq data.
@@ -173,7 +176,7 @@ Three publications and invited teaching on reproducibility; EU remote-first, ope
 \end{tightemize}
 \entrysep
 
-\cventry{University of Gdańsk \& Medical University of Gdańsk}{| National exchange}{Winter 2023/24}
+\cventry{University of Gdańsk \& Medical University of Gdańsk}{| National exchange}{\WhenGdansk{}}
 \begin{tightemize}
 \item Metabolomics and proteomics of bioprotective synthetic microbial communities (SynComs).
 \item Phage genomics.
@@ -185,9 +188,9 @@ Three publications and invited teaching on reproducibility; EU remote-first, ope
 
 \section{Publications}
 {\footnotesize
-\textbf{In silico analysis of Cry9 toxins and their genetic determinants in the \textit{Bacillus thuringiensis} pangenome.} \textbf{Charchuta, M. M.} (first author), Baranek, J., et al. \textit{In preparation, 2026.}\par\vspace{3pt}
-\textbf{Combination of dietary fiber and exercise training improves fat loss in mice but does not ameliorate MASLD more than exercise alone.} Kovynev, A.; \textbf{Charchuta, M. M.}; et al. \textit{Am. J. Physiol. Gastrointest. Liver Physiol.}, 2025.\par\vspace{3pt}
-\textbf{WED-517 Oatmeal a day does not keep the doctor away: inulin and exercise impact on MASLD amelioration and gut-liver crosstalk.} Kovynev, A.; \textbf{Charchuta, M.}; et al. \textit{J. Hepatol.}, 2024.\par
+\PubCry{}\par\vspace{3pt}
+\PubAjp{}\par\vspace{3pt}
+\PubHep{}\par
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -196,7 +199,7 @@ Three publications and invited teaching on reproducibility; EU remote-first, ope
 
 \section{Talks, Teaching \& Community}
 
-\cventry{CRABS 2026 / Health Intelligence}{| Invited Speaker \& Workshop Lead}{Aug 2026 | Kyiv, UA}
+\cventry{CRABS 2026 / Health Intelligence}{| Invited Speaker \& Workshop Lead}{\WhenCrabs{}}
 \begin{tightemize}
 \item Lecture on \textit{Reproducibility in Computational Genomics}.
 \item Two hands-on Nextflow pipeline workshops.
@@ -204,7 +207,7 @@ Three publications and invited teaching on reproducibility; EU remote-first, ope
 \end{tightemize}
 \entrysep
 
-\cventry{Bioinformatics Community PL}{| Co-organiser}{2024 -- Present}
+\cventry{Bioinformatics Community PL}{| Co-organiser}{\WhenBioinfPl{}}
 \begin{tightemize}
 \item Event coordination, website and open-science advocacy.
 \end{tightemize}
@@ -227,12 +230,12 @@ Three publications and invited teaching on reproducibility; EU remote-first, ope
 }
 
 \section{Languages}
-{\small English (C2) \textbullet{} Polish (native) \textbullet{} German (B2) \textbullet{} French (B2) \textbullet{} Czech (A2) \textbullet{} Hungarian (A2)\par}
+{\small \LanguagesLine{}\par}
 
 \section{Interests}
 {\small Beekeeping and fungiculture \textbullet{} bikepacking \textbullet{} vegan cooking\par}
 
 \vspace{14pt}
-\noindent{\tiny I consent to the use of my personal data for recruitment purposes, in line with the GDPR (EU) 2016/679. My information will be stored and processed solely for the duration of the hiring process.}
+\noindent{\tiny \GdprNotice{}}
 
 \end{document}

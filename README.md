@@ -96,6 +96,32 @@ The script picks a working `latexmk` automatically, which matters when a
 half-finished MiKTeX update leaves a broken copy first on `PATH`. Override it
 with `-MiktexBin`. Intermediate files go to `build/`.
 
+### Shared facts: change a date once
+
+The same career history appears in every length, and again in each tailored
+copy, so a date edited in some files and not others ships wrong information.
+`shared/facts.tex` is the single source of truth for anything that must match
+everywhere:
+
+```latex
+\newcommand{\RoleDanube}{Laboratory Tech / Science Mentor}
+\newcommand{\WhenDanube}{Jun 2026 -- Aug 2028 | Vienna, AT}
+```
+
+Every variant begins with `\input{shared/facts}`. This resolves for the private
+per-application sources too, because builds run with the repository root as the
+working directory.
+
+Facts live here: dates, job titles, institutions, links, thesis titles and
+publication strings. **Prose does not.** The one-page resume summarises a role
+in a line where the full CV spends three bullets, and that difference is the
+point of having separate lengths. Share only what would be a factual error if
+it diverged.
+
+Where a fact needs two shapes, define both and keep them in step. `\LanguagesLine`
+runs inline for the wide single-column CV; `\LanguagesStacked` carries explicit
+line breaks for the narrow two-column sidebar.
+
 ### Private material stays outside this repository
 
 This repository is public, so per-application resumes and cover letters are

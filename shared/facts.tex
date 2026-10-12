@@ -1,0 +1,88 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Single source of truth for facts shared by every resume variant.
+%
+% WHY THIS FILE EXISTS
+% The same career history appears in the one-page resume, the two-page
+% resume, the full CV, and in a tailored copy of each per application. That
+% is six or more files. Editing a date in some of them and not the others
+% has already shipped wrong information more than once.
+%
+% WHAT BELONGS HERE
+% Facts that must be identical everywhere: dates, job titles, institutions,
+% links and publication strings.
+%
+% WHAT DOES NOT BELONG HERE
+% Prose. The one-page resume summarises a role in a single line where the
+% full CV spends three bullets, and that difference is the point of having
+% separate lengths. Only share what would be a factual error if it diverged.
+%
+% USAGE
+% Every variant starts with \input{shared/facts}. This resolves for the
+% private per-application sources too, because every build runs with the
+% repository root as the working directory (see build_variants.ps1).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --- Contact -------------------------------------------------------------
+\newcommand{\MyPhone}{+48 730 359 228}
+\newcommand{\MyEmail}{mmcharchuta@gmail.com}
+\newcommand{\MyGithubURL}{https://www.github.com/mmcharchuta}
+\newcommand{\MyLinkedInURL}{https://www.linkedin.com/in/mmcharchuta/}
+\newcommand{\MyNaiveRURL}{https://github.com/mmcharchuta/NaiveR}
+\newcommand{\MySpunVideoURL}{https://youtu.be/6frg_7ykXvc?t=128}
+% The links line, identical in every variant. The location tagline after it
+% is deliberately NOT here: it is tailored per application.
+\newcommand{\MyContactLinks}{%
+  \urlstyle{same}\href{\MyGithubURL}{github.com/mmcharchuta} |
+  \href{\MyLinkedInURL}{linkedin.com/in/mmcharchuta/}\\
+  \MyPhone{} | \href{mailto:\MyEmail}{\MyEmail}}
+
+% --- Experience: roles ---------------------------------------------------
+\newcommand{\RolePhagos}{Bioinformatician}
+\newcommand{\RoleAmuMicro}{Contract Researcher}
+\newcommand{\RoleDanube}{Laboratory Tech / Science Mentor}
+\newcommand{\RoleGba}{Scientist}
+\newcommand{\RoleBeneMeat}{Bioinformatician}
+\newcommand{\RoleLumc}{Bioinformatician}
+\newcommand{\RoleMnm}{Genome Analyst}
+
+% --- Experience: dates and places ----------------------------------------
+\newcommand{\WhenPhagos}{Jul 2026 -- Present | Remote / Paris, FR}
+\newcommand{\WhenAmuMicro}{Sep 2025 -- Jan 2028 | Remote / Poznań, PL}
+\newcommand{\WhenDanube}{Jun 2026 -- Aug 2028 | Vienna, AT}
+\newcommand{\WhenGba}{Jul 2024 -- Jun 2026 | Poznań, PL}
+\newcommand{\WhenBeneMeat}{Mar 2024 -- Jul 2024 | Prague, CZ}
+\newcommand{\WhenLumc}{Jun 2023 -- Oct 2023 | Leiden, NL}
+\newcommand{\WhenMnm}{Feb 2022 -- Jul 2022 | Poznań, PL}
+
+% --- Education -----------------------------------------------------------
+\newcommand{\WhenBoku}{Sep 2026 -- Jul 2027}
+\newcommand{\WhenAmuMsc}{Oct 2025 -- Jul 2027}
+\newcommand{\WhenAmuBsc}{Oct 2021 -- Sep 2025}
+\newcommand{\ThesisMsc}{\textit{In silico analysis of Cry9 toxins and their genetic determinants in the Bacillus thuringiensis pangenome}}
+\newcommand{\ThesisBsc}{\textit{naïve methods for taxonomic classification from marker genes}}
+
+% --- Projects, grants, talks ---------------------------------------------
+\newcommand{\WhenDynamap}{Oct 2023 -- Oct 2025}
+\newcommand{\WhenSpun}{Nov 2022 -- Apr 2024}
+\newcommand{\WhenTrees}{Oct 2021 -- Oct 2023}
+\newcommand{\WhenCrabs}{Aug 2026 | Kyiv, UA}
+\newcommand{\WhenBioinfPl}{2024 -- Present}
+\newcommand{\WhenCharles}{Winter 2022/23 \textbullet{} Summer 2023/24}
+\newcommand{\WhenGdansk}{Winter 2023/24}
+\newcommand{\GrantStudyAtResearch}{app. nr. 201/34/UAM/0074}
+
+% --- Publications --------------------------------------------------------
+% Each entry is one macro so a variant can choose its own separators.
+\newcommand{\PubCry}{\textbf{In silico analysis of Cry9 toxins and their genetic determinants in the \textit{Bacillus thuringiensis} pangenome.} \textbf{Charchuta, M. M.} (first author), Baranek, J., et al. \textit{In preparation, 2026.}}
+\newcommand{\PubAjp}{\textbf{Combination of dietary fiber and exercise training improves fat loss in mice but does not ameliorate MASLD more than exercise alone.} Kovynev, A.; \textbf{Charchuta, M. M.}; et al. \textit{Am. J. Physiol. Gastrointest. Liver Physiol.}, 2025.}
+\newcommand{\PubHep}{\textbf{WED-517 Oatmeal a day does not keep the doctor away: inulin and exercise impact on MASLD amelioration and gut-liver crosstalk.} Kovynev, A.; \textbf{Charchuta, M.}; et al. \textit{J. Hepatol.}, 2024.}
+
+% --- Boilerplate ---------------------------------------------------------
+% Two forms of the same fact. The wide single-column CV runs it inline; the
+% narrow sidebar in the two-column layouts needs explicit line breaks, or it
+% wraps badly. Keep both in step.
+\newcommand{\LanguagesLine}{English (C2) \textbullet{} Polish (Native) \textbullet{} German (B2) \textbullet{} French (B2) \textbullet{} Czech (A2) \textbullet{} Hungarian (A2)}
+\newcommand{\LanguagesStacked}{English (C2) \textbullet{} Polish (Native) \\
+German (B2) \textbullet{} French (B2) \\
+Czech (A2) \textbullet{} Hungarian (A2)}
+\newcommand{\GdprNotice}{I consent to the use of my personal data for recruitment purposes, in line with the GDPR (EU) 2016/679. My information will be stored and processed solely for the duration of the hiring process.}
