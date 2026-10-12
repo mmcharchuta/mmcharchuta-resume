@@ -1,5 +1,12 @@
 name: Build Resume
 
+# Verification only: this workflow proves every variant still compiles.
+# It does not commit anything. PDFs are committed deliberately from a local
+# build (see build_variants.ps1), so a bot committing them here would only
+# add churn and race with your own pushes.
+#
+# The compiled PDFs are attached to each run as a downloadable artifact.
+
 on:
   push:
     paths:
@@ -7,45 +14,82 @@ on:
       - 'deedy-resume-openfont.cls'
       - 'latexmkrc'
       - 'fonts/**'
+      - 'assets/**'
+      - '.github/workflows/build-resume.yml'
+  pull_request:
+    paths:
+      - '**.tex'
+      - 'deedy-resume-openfont.cls'
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - uses: actions/checkout@v3
-      
+      - uses: actions/checkout@v4
+
       - name: Install LaTeX and dependencies
         run: |
           sudo apt-get update
-          # texlive-pictures provides tikz/pgf, required by the class file
-          # for the optional circular profile photo.
-          sudo apt-get install -y texlive-xetex texlive-fonts-recommended \
-            texlive-latex-recommended texlive-latex-extra texlive-pictures latexmk
-      
-      - name: Install custom fonts
+          # texlive-pictures provides tikz/pgf, used by the class for the
+          # optional circular profile photo. texlive-latex-recommended
+          # provides lastpage, used by the multi-page page footers.
+          sudo apt-get install -y --no-install-recommends \
+            texlive-xetex \
+            texlive-fonts-recommended \
+            texlive-latex-recommended \
+            texlive-latex-extra \
+            texlive-pictures \
+            latexmk
+
+      - name: Build every variant, with and without the photo
         run: |
-          mkdir -p ~/.fonts
-          cp -r fonts/* ~/.fonts/
-          fc-cache -fv
-      
-      - name: Build resume with latexmk
-        run: |
-          latexmk -xelatex "Mikolaj Mieszko Charchuta Resume.tex"
-          
-      - name: Generate timestamped PDF
-        run: |
-          DATE=$(date +%d%b%Y)
-          cp "Mikolaj Mieszko Charchuta Resume.pdf" "Resume_${DATE}.pdf"
-      
-      - name: Commit and push changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          
-          if [ "$(git status --porcelain)" != "" ]; then
-            git add "Mikolaj Mieszko Charchuta Resume.pdf" "Resume_*.pdf"
-            git commit -m "Auto-build: Update resume PDF [$(date +%Y-%m-%d)]"
-            git push
-          fi
+          set -euo pipefail
+          mkdir -p build/ci
+          status=0
+          for src in "Mikolaj Mieszko Charchuta Resume.tex" variants/*.tex; do
+            [ -e "$src" ] || continue
+            name=$(basename "$src" .tex | tr ' ' '_')
+
+            echo "::group::$src (plain)"
+            if ! latexmk -xelatex -interaction=nonstopmode -halt-on-error \
+                 -file-line-error -jobname="$name" -outdir=build/ci "$src"; then
+              echo "::error file=$src::Failed to compile $src"
+              status=1
+            fi
+            echo "::endgroup::"
+
+            echo "::group::$src (with photo)"
+            if [ -f assets/profile-photo.jpg ]; then
+              if ! latexmk -xelatex -interaction=nonstopmode -halt-on-error \
+                   -file-line-error -jobname="${name}_photo" -outdir=build/ci \
+                   '-usepretex=\def\withphoto{}' "$src"; then
+                echo "::error file=$src::Failed to compile $src with photo"
+                status=1
+              fi
+            else
+              echo "assets/profile-photo.jpg not present; skipping photo build"
+            fi
+            echo "::endgroup::"
+          done
+          exit $status
+
+      - name: Upload compiled PDFs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-pdfs
+          path: build/ci/*.pdf
+          if-no-files-found: error
+
+      - name: Upload LaTeX logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: latex-logs
+          path: build/ci/*.log
+          if-no-files-found: ignore

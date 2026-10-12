@@ -62,10 +62,16 @@ Run the automated build script:
 powershell -ExecutionPolicy Bypass -File .\build_resume.ps1
 ```
 
-This will:
-1. Compile the LaTeX source using XeLaTeX via latexmk
-2. Generate `Mikolaj Mieszko Charchuta Resume.pdf`
-3. Create a timestamped version: `Resume_ddMMMYYYY.pdf` (e.g., `Resume_22Feb2026.pdf`)
+This builds only the one-page resume. It also writes a dated copy and moves
+older ones into `archive/`, both of which are git-ignored and stay local. Use
+`build_variants.ps1` below to build every length.
+
+### Continuous integration
+
+A GitHub Actions workflow compiles every variant, with and without the photo, on
+any push that touches a source file. It **verifies only** and commits nothing,
+since PDFs are committed deliberately from a local build. Each run attaches the
+compiled PDFs as a downloadable artifact, and failed runs attach the LaTeX logs.
 
 ### Building all three lengths
 
